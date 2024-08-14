@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System - Registration</title>
+    <link rel="stylesheet" href="smp.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        form {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 100%;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+        }
+        nav {
+            margin-top: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Management System</h1>
+
+    <h2>Registration</h2>
+    <form action="arsene.php" method="post"></form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+    <div id="feedback" class="error"></div>
+
+    <nav>
+        <ul>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="teachers.html">Teachers</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function register() {
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const feedback = document.getElementById('feedback');
+
+            // Basic validation
+            if (!name || !password || !confirmPassword) {
+                feedback.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            if (password.length < 6) {
+                feedback.textContent = 'Password must be at least 6 characters long.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                feedback.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            // If all validations pass
+            feedback.textContent = '';
+            alert('Registration successful!');
+            document.getElementById('registrationForm').reset();
+        }
+      
+    </script>
+</body>
+</html>

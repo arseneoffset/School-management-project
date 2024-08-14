@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Students</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        form {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Students</h1>
+    
+    <form id="studentForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="fullName">Full Name:</label></td>
+                    <td><input type="text" id="fullName" name="fullName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="number" id="age" name="age" required></td>
+                </tr>
+                <tr>
+                    <td><label for="grade">Grade:</label></td>
+                    <td><input type="text" id="grade" name="grade" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="3" required></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addStudent()">Add Student</button>
+    </form>
+    
+    <h2>Student List</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student entries will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function addStudent() {
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const age = document.getElementById('age').value;
+            const grade = document.getElementById('grade').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            
+            // Validate form values (basic validation)
+            if (!fullName || !age || !grade || !email || !address) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Create a new row for the student
+            const table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            // Insert new cells and set their content
+            newRow.insertCell(0).textContent = fullName;
+            newRow.insertCell(1).textContent = age;
+            newRow.insertCell(2).textContent = grade;
+            newRow.insertCell(3).textContent = email;
+            newRow.insertCell(4).textContent = address;
+            
+            // Clear the form fields
+            document.getElementById('studentForm').reset();
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>

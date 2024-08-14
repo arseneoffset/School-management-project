@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Teachers</title>
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        form {
+            margin: 20px 0;
+        }
+        textarea {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Teachers</h1>
+    
+    <form id="teacherForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="fullName">Full Name:</label></td>
+                    <td><input type="text" id="fullName" name="fullName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="subject">Subject:</label></td>
+                    <td><input type="text" id="subject" name="subject" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone Number:</label></td>
+                    <td><input type="tel" id="phone" name="phone" required></td>
+                </tr>
+                <tr>
+                    <td><label for="hireDate">Hire Date:</label></td>
+                    <td><input type="date" id="hireDate" name="hireDate" required></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="3" required></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="addTeacher()">Add Teacher</button>
+    </form>
+    
+    <h2>Teacher List</h2>
+    <table id="teacherTable">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Subject</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Hire Date</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Teacher entries will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function addTeacher() {
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const subject = document.getElementById('subject').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const hireDate = document.getElementById('hireDate').value;
+            const address = document.getElementById('address').value;
+            
+            // Validate form values (basic validation)
+            if (!fullName || !subject || !email || !phone || !hireDate || !address) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Create a new row for the teacher
+            const table = document.getElementById('teacherTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            // Insert new cells and set their content
+            newRow.insertCell(0).textContent = fullName;
+            newRow.insertCell(1).textContent = subject;
+            newRow.insertCell(2).textContent = email;
+            newRow.insertCell(3).textContent = phone;
+            newRow.insertCell(4).textContent = hireDate;
+            newRow.insertCell(5).textContent = address;
+            
+            // Clear the form fields
+            document.getElementById('teacherForm').reset();
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
